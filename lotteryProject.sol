@@ -16,7 +16,7 @@ contract lotteryProject{
     }
 
     function participate() public payable {
-        require(msg.value==1,"send 1 ether only");
+        require(msg.value==1 ether,"send 1 ether only");
         players.push(payable(msg.sender));
     }
 
@@ -37,5 +37,6 @@ contract lotteryProject{
         uint index=rand%players.length;
         winner=players[index];
         winner.transfer(address(this).balance);
+        players=new address payable[](0);
     }
 }
